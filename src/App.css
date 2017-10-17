@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Stalinist+One');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+.App-header {
+  background-color:#00181D;
+  padding: 50px;
+  color: white;
+  text-align: center;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.nav-links-container {
+  border: 2px solid #FF004D;
+}
+.site-title {
+  display: inline-flex;
+}
+.site-title h1{
+  color:#00CCFF;
+  font-family: 'Stalinist One', cursive;
+  text-shadow: -5px 5px #005E75;
+}
+.site-title h2{
+  margin-top:15px;
+  margin-left: -35px;
+  color: #FF004D;
+  font-family: 'Raleway', sans-serif;
+  text-shadow: 2px 2px 5px #FF004D;
+  -ms-transform: rotate(30deg); 
+  -webkit-transform: rotate(30deg);
+}
+.nav-links {
+  text-decoration: none;
+  margin: 10px;
+  color: #FF004D;
+  padding:10px;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.nav-links:hover {
+  color:#00181D;
+  background-color: #FF004D;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/*@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}*/
