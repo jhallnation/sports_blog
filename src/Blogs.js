@@ -14,14 +14,12 @@ export class Blogs extends Component {
     $.ajax({
       url: "http://localhost:3001/blogs",
       dataType: 'json',
-      cashe:false,
+      cache:false,
       success: function(data){
-        this.setState({blogs: data}, function(){
-          console.log(this.state);
-        })
+        this.setState({blogs: data});
       }.bind(this),
       error: function(xhr, status, err){
-        console.log(err);
+        alert(err);
       }
     });
   }
@@ -36,9 +34,20 @@ export class Blogs extends Component {
   }
 
   handleAddBlog(blog){
-    let blogs = this.state.blogs;
-    blogs.push(blog);
-    this.setState({blogs:blogs});
+    let data = blog;
+    console.log(data);
+    $.ajax({
+      url: "http://localhost:3001/blogs",
+      dataType: 'json',
+      type: 'POST',
+      data: {blog: blog},
+      success: function(data){
+        alert('New Blog Created!');
+      },
+      error: function(xhr, status, err){
+        alert(err);
+      }
+    });
   }
 
   render(){
