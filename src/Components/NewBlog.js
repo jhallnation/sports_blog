@@ -31,11 +31,11 @@ export class NewBlog extends Component {
     const newDisplay = this.state.display === 'none' ? 'block' : 'none';
     this.setState({ display: newDisplay });
   }
-  
+
   render(){
     return ( 
       <div>
-        <h4 onClick={this.toggleDisplay } >New Blog</h4>
+        <h4 className='new-blog-header' onClick={this.toggleDisplay } >New Blog</h4>
         <form onSubmit={this.handleSubmit.bind(this)} style={{display:this.state.display}} >
           <div>
             <label>Title</label><br />

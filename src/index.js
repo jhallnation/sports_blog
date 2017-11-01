@@ -5,7 +5,7 @@ import { App } from './App.js';
 import { About } from './Containers/About.js';
 import { Contact } from './Containers/Contact.js';
 import { Home } from './Containers/Home.js';
-import './index.css';
+import './App.css';
 
 ReactDOM.render(
       <BrowserRouter>

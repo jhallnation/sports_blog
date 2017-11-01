@@ -63,7 +63,7 @@ export class Blogs extends Component {
     }
 
     return ( 
-      <div className='content-container'>
+      <div>
         <NewBlog addBlog={this.handleAddBlog.bind(this)} />
         {BlogItems}
       </div>
