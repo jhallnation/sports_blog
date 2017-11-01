@@ -36,16 +36,16 @@ export class NewBlog extends Component {
     return ( 
       <div>
         <h4 className='new-blog-header' onClick={this.toggleDisplay } >New Blog</h4>
-        <form onSubmit={this.handleSubmit.bind(this)} style={{display:this.state.display}} >
+        <form className='blog-form' onSubmit={this.handleSubmit.bind(this)} style={{display:this.state.display}} >
           <div>
             <label>Title</label><br />
-            <input type='text' ref='title' />
+            <input className='blog-title-box' type='text' ref='title' />
           </div>
           <div>
             <label>Body</label><br />
-            <textarea type='text' ref='body' />
+            <textarea className='blog-body-box' type='text' ref='body' />
           </div>
-          <input type="submit" value="Submit" />
+          <input className='blog-submit' type="submit" value="Submit" />
         </form>
       </div>
     );
