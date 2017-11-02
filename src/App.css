@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Stalinist+One');
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
+Link {
+  text-decoration: none;
+}
 /*
 
 NAV
@@ -37,6 +40,9 @@ NAV
   text-shadow: 2px 2px 5px #FF004D;
   -ms-transform: rotate(30deg); 
   -webkit-transform: rotate(30deg);
+}
+.site-title h2:hover {
+  animation: Logo-spin 2s infinite;
 }
 .nav-links {
   text-decoration: none;
@@ -182,7 +188,7 @@ Form
   border-top-left-radius: 0px;
   border-bottom-right-radius: 0px; 
 }
-/*@keyframes App-logo-spin {
+@keyframes Logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}*/
+}

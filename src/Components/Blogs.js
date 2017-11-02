@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NewBlog } from './NewBlog.js';
-import { BlogItem } from './BlogItem.js';
+
+import { BlogItems } from '../Components/BlogItems';
 import $ from 'jquery';
 import '../App.css';
 
@@ -28,6 +29,7 @@ export class Blogs extends Component {
     this.setState({blogs: []
   });
     this.getBlogPosts();
+
   }
   componentDidMount(){
     this.getBlogPosts();
@@ -48,24 +50,14 @@ export class Blogs extends Component {
         alert(err);
       }
     });
+    
   }
 
   render(){
-
-    let BlogItems;
-    if(this.state.blogs){
-
-      BlogItems = this.state.blogs.map(function(blog, index){
-                    return (
-                      <BlogItem key={ index } blog={blog} />
-                    );
-                  })
-    }
-
     return ( 
       <div>
         <NewBlog addBlog={this.handleAddBlog.bind(this)} />
-        {BlogItems}
+        <BlogItems blogs={this.state.blogs} />
       </div>
     );
   }
