@@ -25,6 +25,19 @@ export class Blogs extends Component {
     });
   }
 
+  handleSubmit(e){
+    if(this.refs.title.value === ''){
+      alert('TITLE IS REQUIRED');
+    } else {
+      this.setState({newBlog:{
+        title: this.refs.title.value,
+        body: this.refs.body.value
+      }}, function(){
+        this.props.getBlogPosts(this.state.newBlog);
+      });
+    }
+    e.preventDefault();
+  }
   componentWillMount(){
     this.setState({blogs: []
   });
@@ -36,21 +49,18 @@ export class Blogs extends Component {
   }
 
   handleAddBlog(blog){
-    let data = blog;
-    console.log(data);
     $.ajax({
       url: "http://localhost:3001/blogs",
       dataType: 'json',
       type: 'POST',
       data: {blog: blog},
       success: function(data){
-        alert('New Blog Created!');
       },
       error: function(xhr, status, err){
         alert(err);
       }
     });
-    
+    window.location = "http://localhost:3000/";
   }
 
   render(){

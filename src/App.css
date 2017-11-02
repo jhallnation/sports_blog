@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Stalinist+One');
 @import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
 
 Link {
   text-decoration: none;
@@ -30,14 +31,12 @@ NAV
 .site-title h1{
   color:#00CCFF;
   font-family: 'Stalinist One', cursive;
-  text-shadow: -5px 5px #005E75;
 }
 .site-title h2{
   margin-top:15px;
   margin-left: -35px;
   color: #FF004D;
   font-family: 'Raleway', sans-serif;
-  text-shadow: 2px 2px 5px #FF004D;
   -ms-transform: rotate(30deg); 
   -webkit-transform: rotate(30deg);
 }
@@ -74,7 +73,7 @@ PAGE CONTENT
 
 .page-title {
   text-align: center;
-  font-family: 'Stalinist One', cursive;
+  font-family: 'Comfortaa', cursive;
 }
 
 hr { 
@@ -132,9 +131,9 @@ HOME
   font-size: 30px;
   text-align: center;
   color: #FF004D;
-  -webkit-text-stroke: 1px #00181D;  
-  font-family: 'Stalinist One', cursive;
-  font-weight: bold;
+  -webkit-text-stroke: .02px #00181D;  
+  font-family: 'Comfortaa', cursive;
+
 }
 /*
 
