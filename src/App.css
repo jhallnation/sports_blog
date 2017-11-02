@@ -112,7 +112,6 @@ HOME
 }
 .blog-container {
   color: #00181D;
-  cursor: pointer;
   margin:15px;
   border:1px solid #00CCFF;
   padding: 15px;
@@ -120,13 +119,14 @@ HOME
   border-top-left-radius: 20px;
   border-bottom-right-radius: 20px; 
 }
-.blog-container:hover {
+.blog-link .blog-container:hover {
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
   border-top-left-radius: 0px;
   border-bottom-right-radius: 0px; 
   background-color: #00CCFF;
   color: #fff;
+  cursor: pointer;
 }
 .blog-title {
   font-size: 30px;

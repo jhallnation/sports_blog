@@ -4,11 +4,10 @@ export class Show extends Component {
   render(){
     return ( 
       <div className='blog-container'>
-        <h3 className='blog-title'>testing</h3>
+        <h3 className='blog-title'>{this.props.location.param1}</h3>
         <div name='blog-content' >
-          <p></p>
-          <p></p>
-          <p>{console.log(this)}</p>
+          <p>{this.props.location.param2}</p>
+          <p>{this.props.match.params.id}</p>
         </div>
       </div>
     );
