@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export class Nav extends Component {
   render(){
@@ -10,9 +10,9 @@ export class Nav extends Component {
               <h1>JHALL NATION</h1><h2>Sports</h2>
             </div>
             <div className='nav-links-container'>
-              <Link className='nav-links' to="">Home</Link>
-              <Link className='nav-links' to="about">About</Link>
-              <Link className='nav-links' to="contact">Contact</Link>
+              <NavLink className='nav-links' activeClassName="active" to="/about">About</NavLink>
+              <NavLink className='nav-links' exact activeClassName="active" to="/">Blog</NavLink>
+              <NavLink className='nav-links' activeClassName="active" to="/contact">Contact</NavLink>
             </div>
           </div>
         </div>

@@ -7,7 +7,7 @@ export class Home extends Component {
   render(){
     return ( 
       <div className='content-container'>
-        <h1 className='page-title'>Home</h1>
+        <h1 className='page-title'>Blog</h1>
         <hr />
         <Blogs />
       </div>

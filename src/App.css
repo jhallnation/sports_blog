@@ -59,6 +59,12 @@ NAV
   border-top-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
+.active {
+  color:#00181D;
+  background-color: #FF004D;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
 
 /*
 

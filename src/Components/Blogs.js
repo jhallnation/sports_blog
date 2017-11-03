@@ -69,8 +69,6 @@ export class Blogs extends Component {
           alert(err);
         }
       });
-    }else{
-      window.location = "http://localhost:3000/";
     }
   }
 
