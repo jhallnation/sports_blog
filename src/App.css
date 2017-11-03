@@ -24,6 +24,7 @@ NAV
 
 .nav-links-container {
   border: 2px solid #FF004D;
+  border-radius: 10px;
 }
 .site-title {
   display: inline-flex;
@@ -54,16 +55,21 @@ NAV
 }
 
 .nav-links:hover {
-  color:#00181D;
-  background-color: #FF004D;
+  color:#FF004D;
+  background-color: #00181D;
+  border:1px solid #FF004D;
   border-top-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 .active {
   color:#00181D;
   background-color: #FF004D;
   border-top-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 /*
@@ -99,21 +105,23 @@ HOME
   cursor: pointer;
   text-align: center;
   margin-bottom: 50px;
-  background-color: #00CCFF;
-  color: #FFF;
+  background-color: #FFF;
+  color: #00CCFF;
   padding: 5px;
   margin: 10px 125px 10px 125px; 
   border-top-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border:1px solid #00CCFF; 
 }
 .new-blog-header:hover {
-  background-color: #FFF;
-  color: #00CCFF;
+  background-color: #00CCFF;
+  color: #FFF;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
-  border-top-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  border:1px solid #00CCFF; 
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .blog-container {
   color: #00181D;
@@ -121,14 +129,16 @@ HOME
   border:1px solid #00CCFF;
   padding: 15px;
   letter-spacing: 2.5px;
-  border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px; 
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 30px; 
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 .blog-link .blog-container:hover {
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-top-left-radius: 0px;
-  border-bottom-right-radius: 0px; 
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px; 
   background-color: #00CCFF;
   color: #fff;
   cursor: pointer;
@@ -136,8 +146,7 @@ HOME
 .blog-title {
   font-size: 30px;
   text-align: center;
-  color: #FF004D;
-  -webkit-text-stroke: .02px #00181D;  
+  color: #FF004D; 
   font-family: 'Comfortaa', cursive;
 
 }
@@ -183,15 +192,17 @@ Form
   font-family: 'Stalinist One', cursive;
   padding:10px;
   border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px; 
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px; 
 }
 .blog-submit:hover {
   background-color: #FF004D;
   color:#FFF;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
-  border-top-left-radius: 0px;
-  border-bottom-right-radius: 0px; 
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px; 
 }
 
 button {
@@ -201,17 +212,19 @@ button {
   background-color: #fff;
   font-family: 'Raleway', sans-serif;
   padding:7px;
-  border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px; 
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px; 
 }
 
 button:hover {
   background-color: #FF004D;
   color:#FFF;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-top-left-radius: 0px;
-  border-bottom-right-radius: 0px; 
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px; 
 }
 /*
 
