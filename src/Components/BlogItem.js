@@ -7,11 +7,11 @@ export class BlogItem extends Component {
   }
 
   render(){
-    const newTo = { pathname: '/blog/' + this.props.blog.id, param1: this.props.blog.title, param2: this.props.blog.body }
+    const newTo = { pathname: '/blog/' + this.props.blog.id, param1: this.props.blog.title, param2: this.props.blog.body, param3: this.props.onDelete }
     return (
       <div className='blog-link' >
         <button onClick={this.deleteBlog.bind(this, this.props.blog.id)}>Delete Blog {this.props.blog.title}</button>
-        <Link to={newTo } style={{ textDecoration: 'none' }}>
+        <Link to={newTo } style={{ textDecoration: 'none' }} >
           <div className='blog-container'>
             <h3 className='blog-title'>{this.props.blog.title}</h3>
             <div name='blog-content' >

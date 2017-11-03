@@ -187,6 +187,32 @@ Form
   border-top-left-radius: 0px;
   border-bottom-right-radius: 0px; 
 }
+
+button {
+  cursor: pointer;
+  color:#FF004D;
+  border:1px solid #FF004D;
+  background-color: #fff;
+  font-family: 'Raleway', sans-serif;
+  padding:7px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px; 
+}
+
+button:hover {
+  background-color: #FF004D;
+  color:#FFF;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 0px; 
+}
+/*
+
+animations
+
+*/
+
 @keyframes Logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

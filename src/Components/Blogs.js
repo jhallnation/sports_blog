@@ -38,15 +38,6 @@ export class Blogs extends Component {
     }
     e.preventDefault();
   }
-  componentWillMount(){
-    this.setState({blogs: []
-  });
-    this.getBlogPosts();
-
-  }
-  componentDidMount(){
-    this.getBlogPosts();
-  }
 
   handleAddBlog(blog){
     $.ajax({
@@ -64,18 +55,33 @@ export class Blogs extends Component {
   }
 
   handleDeleteBlog(id){
-    $.ajax({
-      url: "http://localhost:3001/blogs/" + id,
-      dataType: 'json',
-      type: 'DELETE',
-      data: id,
-      success: function(){
-        window.location = "http://localhost:3000/";
-      },
-      error: function(xhr, status, err){
-        alert(err);
-      }
-    });
+    let destroyBlog = prompt('Are you sure you want to delete this blog? Type Y for yes!')
+    if(destroyBlog === 'y'){
+      $.ajax({
+        url: "http://localhost:3001/blogs/" + id,
+        dataType: 'json',
+        type: 'DELETE',
+        data: id,
+        success: function(){
+          window.location = "http://localhost:3000/";
+        },
+        error: function(xhr, status, err){
+          alert(err);
+        }
+      });
+    }else{
+      window.location = "http://localhost:3000/";
+    }
+  }
+
+  componentWillMount(){
+    this.setState({blogs: []
+  });
+    this.getBlogPosts();
+
+  }
+  componentDidMount(){
+    this.getBlogPosts();
   }
 
   render(){
