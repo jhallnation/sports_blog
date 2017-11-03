@@ -54,6 +54,22 @@ export class Blogs extends Component {
     });
   }
 
+  handleEditBlog(blog){
+    console.log(blog);
+    $.ajax({
+      url: "http://localhost:3001/blogs/" + blog.id,
+      dataType: 'json',
+      type: 'PUT',
+      data: {blog},
+      success: function(){
+        window.location = "http://localhost:3000/";
+      },
+      error: function(xhr, status, err){
+        alert(err);
+      }
+    });
+  }
+
   handleDeleteBlog(id){
     let destroyBlog = prompt('Are you sure you want to delete this blog? Type Y for yes!')
     if(destroyBlog === 'y'){
@@ -86,7 +102,7 @@ export class Blogs extends Component {
     return ( 
       <div>
         <NewBlog addBlog={this.handleAddBlog.bind(this)} />
-        <BlogItems blogs={this.state.blogs} onDelete={this.handleDeleteBlog.bind(this)} />
+        <BlogItems blogs={this.state.blogs} onDelete={this.handleDeleteBlog.bind(this)} onEdit={this.handleEditBlog.bind(this)}/>
       </div>
     );
   }

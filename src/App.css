@@ -79,7 +79,7 @@ PAGE CONTENT
 */
 
 .content-container{
-  margin: 0px 100px 100px 100px;
+  margin: 0px 50px 75px 50px;
   font-family: 'Raleway', sans-serif;
 }
 
@@ -162,6 +162,7 @@ Form
   font-family: 'Raleway', sans-serif;
   border-radius: 25px;
   text-align: center;
+  background-color: #00CCFF;
 }
 .blog-title-box {
   border:1px solid black;
@@ -203,6 +204,12 @@ Form
   border-bottom-left-radius: 20px;
   border-top-left-radius: 5px;
   border-bottom-right-radius: 5px; 
+}
+
+.admin-options {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
 }
 
 button {

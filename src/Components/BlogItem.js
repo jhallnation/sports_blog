@@ -7,23 +7,27 @@ export class BlogItem extends Component {
     super();
     this.state = { 
       blogdisplay: '',
-      formdisplay: ''
+      formdisplay: '',
+      editbutton: ''
     }
     this.toggleDisplay = this.toggleDisplay.bind(this);
   }
   componentWillMount(){
     this.setState({ 
       blogdisplay: 'block',
-      formdisplay: 'none'
+      formdisplay: 'none',
+      editbutton: 'Edit Blog'
     });
   }
 
   toggleDisplay() {
     const newBlogDisplay = this.state.blogdisplay === 'none' ? 'block' : 'none';
     const newFormDisplay = this.state.formdisplay === 'block' ? 'none' : 'block';
+    const changeEditButton = this.state.editbutton === 'Edit Blog' ? 'Cancel Edit for' : 'Edit Blog';
     this.setState({ 
       blogdisplay: newBlogDisplay,
-      formdisplay: newFormDisplay
+      formdisplay: newFormDisplay,
+      editbutton: changeEditButton
     });
   }
 
@@ -31,14 +35,18 @@ export class BlogItem extends Component {
     this.props.onDelete(id);
   }
 
+  editBlog(blog){
+    this.props.onEdit(blog);
+  }
+
   render(){
     const newTo = { pathname: '/blog/' + this.props.blog.id, param1: this.props.blog.title, param2: this.props.blog.body, param3: this.props.onDelete }
     return (
       <div>
         <div className='blog-link' >
-          <div>
+          <div className='admin-options'>
             <button onClick={this.deleteBlog.bind(this, this.props.blog.id)}>Delete Blog {this.props.blog.title}</button>
-            <button onClick={this.toggleDisplay } >Edit Blog</button>
+            <button onClick={this.toggleDisplay } >{this.state.editbutton} {this.props.blog.title}</button>
           </div>
           <Link to={newTo } style={{ textDecoration: 'none', display:this.state.blogdisplay}} >
             <div className='blog-container'>
@@ -51,7 +59,7 @@ export class BlogItem extends Component {
           </Link>
         </div>
         <div style={{display:this.state.formdisplay}}>
-          <EditBlog blog={this.props.blog} />
+          <EditBlog blog={this.props.blog} editBlog={this.editBlog.bind(this)}/>
         </div>
       </div>
     );
