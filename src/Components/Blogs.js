@@ -54,20 +54,35 @@ export class Blogs extends Component {
       dataType: 'json',
       type: 'POST',
       data: {blog: blog},
-      success: function(data){
+      success: function(){
+        window.location = "http://localhost:3000/";
       },
       error: function(xhr, status, err){
         alert(err);
       }
     });
-    window.location = "http://localhost:3000/";
+  }
+
+  handleDeleteBlog(id){
+    $.ajax({
+      url: "http://localhost:3001/blogs/" + id,
+      dataType: 'json',
+      type: 'DELETE',
+      data: id,
+      success: function(){
+        window.location = "http://localhost:3000/";
+      },
+      error: function(xhr, status, err){
+        alert(err);
+      }
+    });
   }
 
   render(){
     return ( 
       <div>
         <NewBlog addBlog={this.handleAddBlog.bind(this)} />
-        <BlogItems blogs={this.state.blogs} />
+        <BlogItems blogs={this.state.blogs} onDelete={this.handleDeleteBlog.bind(this)} />
       </div>
     );
   }
