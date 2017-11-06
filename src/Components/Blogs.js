@@ -63,6 +63,7 @@ export class Blogs extends Component {
       data: {blog},
       success: function(){
         window.location = "http://localhost:3000/";
+                // window.location.reload(true) 
       },
       error: function(xhr, status, err){
         alert(err);

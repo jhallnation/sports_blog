@@ -11,6 +11,7 @@ export class BlogItem extends Component {
       editbutton: ''
     }
     this.toggleDisplay = this.toggleDisplay.bind(this);
+    this.truncateBlog = this.truncateBlog.bind(this);
   }
   componentWillMount(){
     this.setState({ 
@@ -39,8 +40,16 @@ export class BlogItem extends Component {
     this.props.onEdit(blog);
   }
 
+  truncateBlog(blogBody){
+    if(blogBody.length > 200){
+      return blogBody.substring(0, 200) + "...";
+    }else{
+      return blogBody;
+    }
+  }
+
   render(){
-    const newTo = { pathname: '/blog/' + this.props.blog.id, param1: this.props.blog.title, param2: this.props.blog.body, param3: this.props.onDelete }
+    const newTo = { pathname: '/blog/' + this.props.blog.id, blog: this.props.blog, title: this.props.blog.title, body: this.props.blog.body, onDelete: this.props.onDelete, onEdit: this.props.onEdit }
     return (
       <div>
         <div className='blog-link' >
@@ -52,7 +61,7 @@ export class BlogItem extends Component {
             <div className='blog-container'>
               <h3 className='blog-title'>{this.props.blog.title}</h3>
               <div name='blog-content' >
-                <p>{this.props.blog.body}</p>
+                <p>{this.truncateBlog(this.props.blog.body)}</p>
                 <p>{this.props.blog.id}</p>
               </div>
             </div>
