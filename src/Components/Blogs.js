@@ -10,7 +10,7 @@ export class Blogs extends Component {
     super();
     this.state = { blogs: [] };
   }
-
+ 
   getBlogPosts(){
     $.ajax({
       url: "http://localhost:3001/blogs",
@@ -23,20 +23,6 @@ export class Blogs extends Component {
         alert(err);
       }
     });
-  }
-
-  handleSubmit(e){
-    if(this.refs.title.value === ''){
-      alert('TITLE IS REQUIRED');
-    } else {
-      this.setState({newBlog:{
-        title: this.refs.title.value,
-        body: this.refs.body.value
-      }}, function(){
-        this.props.getBlogPosts(this.state.newBlog);
-      });
-    }
-    e.preventDefault();
   }
 
   handleAddBlog(blog){
@@ -89,13 +75,23 @@ export class Blogs extends Component {
     }
   }
 
+  handleSubmit(e){
+    if(this.refs.title.value === ''){
+      alert('TITLE IS REQUIRED');
+    } else {
+      this.setState({newBlog:{
+        title: this.refs.title.value,
+        body: this.refs.body.value
+      }}, function(){
+        this.props.getBlogPosts(this.state.newBlog);
+      });
+    }
+    e.preventDefault();
+  }
+
   componentWillMount(){
     this.setState({blogs: []
   });
-    this.getBlogPosts();
-
-  }
-  componentDidMount(){
     this.getBlogPosts();
   }
 

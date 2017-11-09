@@ -11,6 +11,7 @@ export class Show extends Component {
     }
     this.toggleDisplay = this.toggleDisplay.bind(this);
   }
+
   componentWillMount(){
     this.setState({ 
       blogdisplay: 'block',
@@ -31,33 +32,32 @@ export class Show extends Component {
   }
 
   deleteBlog(id){
-    this.props.location.onDelete(id);
+    this.props.onDelete(id);
   }
 
   editBlog(blog){
-    this.props.location.onEdit(blog);
+    this.props.onEdit(blog);
   }
 
   render(){
     return ( 
-      <div>
         <div>
           <div className='admin-options'>
-            <button onClick={this.deleteBlog.bind(this, this.props.match.params.id)}>Delete Blog {this.props.location.title}</button>
-            <button onClick={this.toggleDisplay}>{this.state.editbutton} {this.props.location.title}</button>
+            <button onClick={this.deleteBlog.bind(this, this.props.blog.id)}>Delete Blog {this.props.blog.title}</button>
+            <div onClick={this.props.showAll}>See All Blogs</div>
+            <button onClick={this.toggleDisplay } >{this.state.editbutton} {this.props.blog.title}</button>
           </div>
-          <div className='blog-container' style={{ display:this.state.blogdisplay}} >
-            <h3 className='blog-title'>{this.props.location.title}</h3>
+          <div className='blog-container' style={{display:this.state.blogdisplay}}>
+            <h3 className='blog-title'>{this.props.blog.title}</h3>
             <div name='blog-content' >
-              <p>{this.props.location.body}</p>
-              <p>{this.props.match.params.id}</p>
+              <p>{this.props.blog.body}</p>
+              <p>{this.props.blog.id}</p>
             </div>
           </div>
+          <div style={{display:this.state.formdisplay}}>
+            <EditBlog blog={this.props.blog} editBlog={this.editBlog.bind(this)}/>
+          </div>
         </div>
-        <div style={{display:this.state.formdisplay}}>
-            <EditBlog blog={this.props.location.blog} editBlog={this.editBlog.bind(this)}/>
-        </div>
-      </div>
     );
   }
 }
