@@ -44,7 +44,7 @@ export class Show extends Component {
         <div>
           <div className='admin-options'>
             <button onClick={this.deleteBlog.bind(this, this.props.blog.id)}>Delete Blog {this.props.blog.title}</button>
-            <div onClick={this.props.showAll}>See All Blogs</div>
+            <button onClick={this.props.showAll}>See All Blogs</button>
             <button onClick={this.toggleDisplay } >{this.state.editbutton} {this.props.blog.title}</button>
           </div>
           <div className='blog-container' style={{display:this.state.blogdisplay}}>

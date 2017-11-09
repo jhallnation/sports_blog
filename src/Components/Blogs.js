@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NewBlog } from './NewBlog.js';
 
 import { BlogItems } from '../Components/BlogItems';
 import $ from 'jquery';
@@ -98,8 +97,7 @@ export class Blogs extends Component {
   render(){
     return ( 
       <div>
-        <NewBlog addBlog={this.handleAddBlog.bind(this)} />
-        <BlogItems blogs={this.state.blogs} onDelete={this.handleDeleteBlog.bind(this)} onEdit={this.handleEditBlog.bind(this)}/>
+        <BlogItems blogs={this.state.blogs} onDelete={this.handleDeleteBlog.bind(this)} onEdit={this.handleEditBlog.bind(this)} onNew={this.handleAddBlog.bind(this)}/>
       </div>
     );
   }

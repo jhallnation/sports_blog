@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BlogItem } from './BlogItem.js';
 import { Show } from '../Containers/Show.js';
+import { NewBlog } from './NewBlog.js';
 
 export class BlogItems extends Component {
   constructor(){
@@ -50,7 +51,7 @@ export class BlogItems extends Component {
     if(this.props.blogs){
       BlogItems = this.props.blogs.map(blog => {
         return (
-          <div style={{display:this.state.singleBlogDisplay}} key={ blog.id }>
+          <div key={ blog.id }>
             <div onClick={this.onBlogClick.bind(this, blog)}>
               <BlogItem blog={blog}/>
             </div>
@@ -60,8 +61,13 @@ export class BlogItems extends Component {
     }  
     return (
       <div> 
-        <div>
-          {BlogItems}
+        <div style={{display:this.state.singleBlogDisplay}} >
+          <div>
+            <NewBlog addBlog={this.props.onNew.bind(this)} />
+          </div>
+          <div>
+            {BlogItems}
+          </div>
         </div>
         <div>
           {this.state.singleBlog}
