@@ -7,12 +7,16 @@ import '../App.css';
 export class Blogs extends Component {
   constructor(){
     super();
-    this.state = { blogs: [] };
+    this.state = { 
+      blogs: [],
+      page: 1
+    };
+    this.pagePagination = this.pagePagination.bind(this);
   }
  
   getBlogPosts(){
     $.ajax({
-      url: "http://localhost:3001/blogs",
+      url: "http://localhost:3001/blogs?page=" + this.state.page,
       dataType: 'json',
       cache:false,
       success: function(data){
@@ -88,15 +92,22 @@ export class Blogs extends Component {
     e.preventDefault();
   }
 
-  componentWillMount(){
-    this.setState({blogs: []
-  });
+  pagePagination(){
+    let currentPage = this.state.page;
+    this.setState({ page: currentPage += 1 });
     this.getBlogPosts();
+  }
+
+  componentWillMount(){
+    this.setState({ blogs: [] });
+    this.getBlogPosts();
+    this.pagePagination();
   }
 
   render(){
     return ( 
       <div>
+      <button onClick={this.pagePagination}>next</button>
         <BlogItems blogs={this.state.blogs} onDelete={this.handleDeleteBlog.bind(this)} onEdit={this.handleEditBlog.bind(this)} onNew={this.handleAddBlog.bind(this)}/>
       </div>
     );

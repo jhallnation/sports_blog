@@ -2,6 +2,9 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/css?family=Comfortaa');
 
+* {
+  margin:auto;
+}
 Link {
   text-decoration: none;
 }
@@ -13,7 +16,7 @@ NAV
 
 .App-header {
   background-color:#00181D;
-  padding: 50px;
+  padding: 25px;
   color: white;
   text-align: center;
 }
@@ -79,7 +82,7 @@ PAGE CONTENT
 */
 
 .content-container{
-  margin: 0px 50px 75px 50px;
+  margin: 0px 25px 75px 25px;
   font-family: 'Raleway', sans-serif;
 }
 
