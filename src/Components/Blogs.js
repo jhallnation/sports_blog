@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Waypoint from 'react-waypoint';
 import { BlogItems } from '../Components/BlogItems';
 import $ from 'jquery';
 import '../App.css';
@@ -11,7 +11,7 @@ export class Blogs extends Component {
       blogs: [],
       page: 1
     };
-    this.pagePagination = this.pagePagination.bind(this);
+    this.pageScroll = this.pageScroll.bind(this);
   }
  
   getBlogPosts(){
@@ -92,23 +92,38 @@ export class Blogs extends Component {
     e.preventDefault();
   }
 
-  pagePagination(){
+  pageScroll(){
     let currentPage = this.state.page;
+    let currentPost = this.state.blogs;
     this.setState({ page: currentPage += 1 });
-    this.getBlogPosts();
+    $.ajax({
+      url: "http://localhost:3001/blogs?page=" + this.state.page,
+      dataType: 'json',
+      cache:false,
+      success: function(data){
+        let allPosts = currentPost.concat(data);
+        this.setState({blogs: allPosts});
+      }.bind(this),
+      error: function(xhr, status, err){
+        alert(err);
+      }
+    });
   }
 
   componentWillMount(){
     this.setState({ blogs: [] });
     this.getBlogPosts();
-    this.pagePagination();
+    this.pageScroll();
   }
 
   render(){
+
     return ( 
       <div>
-      <button onClick={this.pagePagination}>next</button>
         <BlogItems blogs={this.state.blogs} onDelete={this.handleDeleteBlog.bind(this)} onEdit={this.handleEditBlog.bind(this)} onNew={this.handleAddBlog.bind(this)}/>
+        <Waypoint
+          onEnter={this.pageScroll}
+        />
       </div>
     );
   }
