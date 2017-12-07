@@ -13,9 +13,6 @@ Link {
 NAV
 
 */
-.App-header{
-  box-shadow: 0px 11px 8px -10px #00181D;
-}
 .site-top-image{
   background-image: url("../src/images/basketball.jpeg");
   background-attachment: fixed;
@@ -27,16 +24,19 @@ NAV
 }
 
 .nav-menu{
-  box-shadow: 
-    inset 0px 11px 8px -10px #00181D;
   text-align: center;
   background-color:#00CCFF;
-  padding: 25px;
+  padding-top:25px;
+  padding-bottom:25px;
   width: 100%;
+  border-bottom-right-radius: 9px;
+  border-bottom-left-radius: 9px;
 }
 .nav-links-container {
   border: 2px solid #00181D;
   border-radius: 10px;
+  margin-right:25px;
+  margin-left:25px;
 }
 .site-title h1{
   padding-top: 150px;

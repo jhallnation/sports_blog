@@ -7,7 +7,8 @@ export class Nav extends Component {
     super();
     this.state = { 
       position: '',
-      top: ''
+      top: '',
+      boxShadow: ''
     };
     this.changePosition = this.changePosition.bind(this);
   }
@@ -15,16 +16,19 @@ export class Nav extends Component {
   componentWillMount(){
     this.setState({ 
       position: 'fixed',
-      top: 0
+      top: 0,
+      boxShadow: ''
     });
   }
 
   changePosition(){
     const newPosition = this.state.position === 'fixed' ? 'static' : 'fixed';
     const newMargin = this.state.top === 0 ? 440 : 0;
+    const newBoxShadow = this.state.boxShadow === 'inset 0px 11px 8px -10px #00181D, 0px 11px 8px -10px #00181D' ? '0px 11px 8px -10px #00181D' : 'inset 0px 11px 8px -10px #00181D, 0px 11px 8px -10px #00181D';
     this.setState({ 
       position: newPosition,
-      top: newMargin
+      top: newMargin,
+      boxShadow: newBoxShadow
      });
   }
 
@@ -40,7 +44,7 @@ export class Nav extends Component {
               onEnter={this.changePosition}
               onLeave={this.changePosition}
               />
-          <div className='nav-menu' style={{position: this.state.position, top: this.state.top}}>
+          <div className='nav-menu' style={{position: this.state.position, top: this.state.top, boxShadow: this.state.boxShadow}}>
             <div className='nav-links-container'>
               <NavLink className='nav-links' activeClassName="active" to="/about">About</NavLink>
               <NavLink className='nav-links' exact activeClassName="active" to="/">Blog</NavLink>
