@@ -23,14 +23,30 @@ NAV
   text-align: center;
 }
 
-.nav-menu{
+.nav-menu {
+  box-shadow: 
+    inset 0px 11px 8px -10px #00181D, 
+    0px 11px 8px -10px #00181D;  
   text-align: center;
   background-color:#00CCFF;
   padding-top:25px;
   padding-bottom:25px;
   width: 100%;
-  border-bottom-right-radius: 9px;
-  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.nav-menu-fixed {
+  position: fixed;
+  top: 0;
+  box-shadow: 
+    0px 11px 8px -10px #00181D;  
+  text-align: center;
+  background-color:#00CCFF;
+  padding-top:25px;
+  padding-bottom:25px;
+  width: 100%;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 .nav-links-container {
   border: 2px solid #00181D;
