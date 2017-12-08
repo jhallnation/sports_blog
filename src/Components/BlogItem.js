@@ -14,13 +14,18 @@ export class BlogItem extends Component {
     }
   }
 
+
   render(){
+    function createMarkup() {
+      return {__html: this.props.blog.body.html};
+    }
+
     return (
       <div className='blog-link' >
           <div className='blog-container'>
             <h3 className='blog-title'>{this.props.blog.title}</h3>
             <div name='blog-content' >
-              <p>{this.truncateBlog(this.props.blog.body)}</p>
+              <div dangerouslySetInnerHTML={createMarkup()} />
               <p>{this.props.blog.id}</p>
             </div>
           </div>

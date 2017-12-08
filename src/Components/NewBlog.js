@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
+import CKEditor from "react-ckeditor-component";
 
 export class NewBlog extends Component {
   constructor(){
     super();
     this.state = { 
-      newBlog: {},
+      newBlog: {
+        title: '',
+        body: ''
+      },
       display: '' 
     }
     this.toggleDisplay = this.toggleDisplay.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
   handleSubmit(e){
     if(this.refs.title.value === ''){
@@ -15,12 +20,25 @@ export class NewBlog extends Component {
     } else {
       this.setState({newBlog:{
         title: this.refs.title.value,
-        body: this.refs.body.value
+        body: this.state.newBlog.body
       }}, function(){
         this.props.addBlog(this.state.newBlog);
       });
     }
     e.preventDefault();
+  }
+
+  onChange(evt){
+    console.log("onChange fired with event info: ", evt);
+    var newContent = evt.editor.getData();
+    this.setState({
+        newBlog: Object.assign(
+    {}, 
+    this.state.newBlog,
+    { body: newContent }
+  ),
+  contact: {}
+    })
   }
 
   componentWillMount(){
@@ -43,7 +61,11 @@ export class NewBlog extends Component {
           </div>
           <div>
             <label>Body</label><br />
-            <textarea className='blog-body-box' type='text' ref='body' />
+            <CKEditor 
+              content={this.state.newBlog.body}
+              events={{
+                "change": this.onChange
+              }} />
           </div>
           <input className='blog-submit' type="submit" value="Submit" />
         </form>

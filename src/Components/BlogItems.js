@@ -76,6 +76,3 @@ export class BlogItems extends Component {
     );
   }  
 }
-  
-// onDelete={this.deleteBlog.bind(this)} 
-//  onEdit={this.editBlog.bind(this)}
