@@ -1,12 +1,36 @@
 import React, { Component } from 'react';
+import CKEditor from "react-ckeditor-component";
 
 export class EditBlog extends Component {
   constructor(){
     super();
     this.state = { 
-      editBlog: {},
+      editBlog: {
+        title: '',
+        body: ''
+      }
     }
+    this.onChange = this.onChange.bind(this);
   }
+
+  componentWillMount(){
+    this.setState({
+        editBlog: Object.assign(
+          {}, 
+          this.state.editBlog,
+          { 
+            title: this.props.blog.title,
+            body: this.props.blog.body,
+          }
+        )
+    })
+  }
+
+  onChange(evt){
+    var newContent = evt.editor.getData();
+    this.setState({ editBlog: { body: newContent }});
+  }
+
   handleSubmit(e){
     console.log(e);
     if(this.refs.title.value === ''){
@@ -14,7 +38,7 @@ export class EditBlog extends Component {
     } else {
       this.setState({editBlog:{
         title: this.refs.title.value,
-        body: this.refs.body.value,
+        body: this.state.editBlog.body,
         id: this.props.blog.id
       }}, function(){
         this.props.editBlog(this.state.editBlog);
@@ -33,7 +57,12 @@ export class EditBlog extends Component {
           </div>
           <div>
             <label>Body</label><br />
-            <textarea className='blog-body-box' type='text' ref='body' defaultValue={this.props.blog.body}  />
+            <label>Body</label><br />
+            <CKEditor 
+              content={this.state.editBlog.body}
+              events={{
+                "change": this.onChange
+              }} />
           </div>
           <input className='blog-submit' type="submit" value="Submit" />
         </form>
