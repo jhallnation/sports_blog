@@ -29,15 +29,13 @@ export class NewBlog extends Component {
   }
 
   onChange(evt){
-    console.log("onChange fired with event info: ", evt);
     var newContent = evt.editor.getData();
     this.setState({
         newBlog: Object.assign(
-    {}, 
-    this.state.newBlog,
-    { body: newContent }
-  ),
-  contact: {}
+          {}, 
+          this.state.newBlog,
+          { body: newContent }
+        )
     })
   }
 

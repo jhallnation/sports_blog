@@ -50,8 +50,7 @@ export class Show extends Component {
           <div className='blog-container' style={{display:this.state.blogdisplay}}>
             <h3 className='blog-title'>{this.props.blog.title}</h3>
             <div name='blog-content' >
-              <p>{this.props.blog.body}</p>
-              <p>{this.props.blog.id}</p>
+              <div dangerouslySetInnerHTML={{__html: this.props.blog.body}} />
             </div>
           </div>
           <div style={{display:this.state.formdisplay}}>
