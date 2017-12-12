@@ -101,7 +101,7 @@ PAGE CONTENT
 */
 
 .content-container{
-  margin: 0px 25px 75px 25px;
+  padding: 0px 25px 75px 25px;
   font-family: 'Raleway', sans-serif;
 }
 
@@ -141,8 +141,7 @@ HOME
   color: #FFF;
 }
 .blog-container {
-  background-color: #00181D;
-  color: #fff;
+  background-color: #fff;
   margin:15px;
   border:1px solid #00CCFF;
   padding: 15px;
@@ -150,8 +149,8 @@ HOME
   border-radius: 5px;
 }
 .blog-link .blog-container:hover {
-  background-color: #fff;
-  color: #00181D;
+  background-color: #00181D;
+  color: #fff;
   cursor: pointer;
 }
 .blog-title {

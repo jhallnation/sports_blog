@@ -8,6 +8,7 @@
     "react-ckeditor-component": "^1.0.7",
     "react-dom": "^15.6.1",
     "react-scripts": "1.0.13",
+    "react-truncate-html": "^0.1.6",
     "react-waypoint": "^7.3.1"
   },
   "scripts": {

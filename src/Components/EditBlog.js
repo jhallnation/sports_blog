@@ -57,7 +57,6 @@ export class EditBlog extends Component {
           </div>
           <div>
             <label>Body</label><br />
-            <label>Body</label><br />
             <CKEditor 
               content={this.state.editBlog.body}
               events={{

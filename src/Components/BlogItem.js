@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Truncate from 'react-truncate-html';
 
 export class BlogItem extends Component {
   constructor(){
@@ -21,7 +22,11 @@ export class BlogItem extends Component {
           <div className='blog-container'>
             <h3 className='blog-title'>{this.props.blog.title}</h3>
             <div name='blog-content' >
-              <div dangerouslySetInnerHTML={{__html: this.truncateBlog(this.props.blog.body)}} />
+              <Truncate 
+                lines={8} 
+                portrait={10} 
+                dangerouslySetInnerHTML={{__html: this.props.blog.body }}
+              />
             </div>
           </div>
       </div>
