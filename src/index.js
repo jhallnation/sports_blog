@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { App } from './App.js';
 import { About } from './Containers/About.js';
+import { User } from './Containers/User.js';
 import { Home } from './Containers/Home.js';
 import { Show } from './Containers/Show.js';
-import { User } from './Containers/User.js';
 import './App.css';
 
 ReactDOM.render(

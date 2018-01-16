@@ -6,7 +6,7 @@ export class User extends Component {
     super();
     this.state = { 
       user: [],
-      token: ''
+      userToken: ''
     };
   }
 
@@ -20,8 +20,8 @@ export class User extends Component {
         password: user.password
       },
       success: function(data){
-        this.setState({token: data});
-        console.log(this.state.token)
+        this.setState({userToken: data});
+        console.log(this.state.userToken.authentication_token)
       }.bind(this),
       error: function(xhr, status, err){
         alert(err);
