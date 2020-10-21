@@ -6,11 +6,11 @@ import { About } from './Containers/About.js';
 import { User } from './Containers/User.js';
 import { Home } from './Containers/Home.js';
 import { Show } from './Containers/Show.js';
-import './App.css';
+import './styles/App.css';
 
 ReactDOM.render(
       <BrowserRouter>
-        <div>
+        <div className='site-container'>
           <Route path='/' component={App} />
           <Route exact path='/' component={Home} />
           <Route path='/about' component={About} />

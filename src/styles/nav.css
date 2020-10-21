@@ -1,0 +1,91 @@
+.site-top-image{
+  background-image: url("../../src/images/basketball.jpeg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px; 
+  text-align: center;
+}
+
+.nav-menu {
+  box-shadow: 
+    inset 0px 11px 8px -10px #00181D, 
+    0px 11px 8px -10px #00181D;  
+  text-align: center;
+  background-color:#2EB2FF;
+  padding-top:25px;
+  padding-bottom:25px;
+  width: 100%;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.nav-menu-fixed {
+  position: fixed;
+  top: 0;
+  box-shadow: 
+    0px 11px 8px -10px #00181D;  
+  text-align: center;
+  background-color:#2EB2FF;
+  padding-top:25px;
+  padding-bottom:25px;
+  width: 100%;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.nav-links-container {
+  border: 2px solid #00181D;
+  border-radius: 10px;
+  margin-right:25px;
+  margin-left:25px;
+}
+.site-title h1{
+  padding-top: 150px;
+  font-size: 50px;
+  color:#2EB2FF;
+  font-family: 'Stalinist One', cursive;
+}
+.site-title h2{
+  color: #FF004D;
+  font-family: 'Raleway', sans-serif;
+}
+.site-title h2:hover {
+  animation: Logo-spin 2s infinite;
+}
+.nav-links {
+  text-decoration: none;
+  margin: 10px;
+  color: #00181D;
+  padding:10px;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.nav-links:hover {
+  color:#2EB2FF;
+  background-color: #00181D;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.active {
+  color:#2EB2FF;
+  background-color: #00181D;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+/*
+
+animations
+
+*/
+
+@keyframes Logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

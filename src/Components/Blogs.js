@@ -2,25 +2,30 @@ import React, { Component } from 'react';
 import Waypoint from 'react-waypoint';
 import { BlogItems } from '../Components/BlogItems';
 import $ from 'jquery';
-import '../App.css';
 
 export class Blogs extends Component {
   constructor(){
     super();
     this.state = { 
       blogs: [],
-      page: 1
+      totalCount: 0,
+      currentPage: 0
     };
     this.pageScroll = this.pageScroll.bind(this);
+    this.getBlogPosts = this.getBlogPosts.bind(this);
   }
  
   getBlogPosts(){
     $.ajax({
-      url: "http://localhost:3001/blogs?page=" + this.state.page,
+      url: "http://localhost:3000/api/sports-blogs?page=" + (this.state.currentPage + 1),
       dataType: 'json',
       cache:false,
       success: function(data){
-        this.setState({blogs: data});
+        this.setState({
+          blogs: this.state.blogs.concat(data.blogs),
+          currentPage: this.state.currentPage + 1,
+          totalCount: data.meta.total_blogs,
+        });
       }.bind(this),
       error: function(xhr, status, err){
         alert(err);
@@ -30,12 +35,12 @@ export class Blogs extends Component {
 
   handleAddBlog(blog){
     $.ajax({
-      url: "http://localhost:3001/blogs",
+      url: "http://localhost:3000/api/sports-blogs/new",
       dataType: 'json',
       type: 'POST',
       data: {blog: blog},
       success: function(){
-        window.location = "http://localhost:3000/";
+        this.getBlogPosts();
       },
       error: function(xhr, status, err){
         alert(err);
@@ -46,12 +51,12 @@ export class Blogs extends Component {
   handleEditBlog(blog){
     console.log(blog);
     $.ajax({
-      url: "http://localhost:3001/blogs/" + blog.id,
+      url: "http://localhost:3000/api/sports-blogs/edit" + blog.id,
       dataType: 'json',
       type: 'PUT',
       data: {blog},
       success: function(){
-        window.location = "http://localhost:3000/";
+        this.getBlogPosts();
                 // window.location.reload(true) 
       },
       error: function(xhr, status, err){
@@ -64,12 +69,12 @@ export class Blogs extends Component {
     let destroyBlog = prompt('Are you sure you want to delete this blog? Type Y for yes!')
     if(destroyBlog === 'y'){
       $.ajax({
-        url: "http://localhost:3001/blogs/" + id,
+        url: "http://localhost:3000/sports-blogs/delete" + id,
         dataType: 'json',
         type: 'DELETE',
         data: id,
         success: function(){
-          window.location = "http://localhost:3000/";
+          this.getBlogPosts();
         },
         error: function(xhr, status, err){
           alert(err);
@@ -93,27 +98,13 @@ export class Blogs extends Component {
   }
 
   pageScroll(){
-    let currentPage = this.state.page;
-    let currentPost = this.state.blogs;
-    this.setState({ page: currentPage += 1 });
-    $.ajax({
-      url: "http://localhost:3001/blogs?page=" + this.state.page,
-      dataType: 'json',
-      cache:false,
-      success: function(data){
-        let allPosts = currentPost.concat(data);
-        this.setState({blogs: allPosts});
-      }.bind(this),
-      error: function(xhr, status, err){
-        alert(err);
-      }
-    });
+    if (this.state.totalCount !== this.state.blogs.length) {
+      this.getBlogPosts();
+    }
   }
 
   componentWillMount(){
-    this.setState({ blogs: [] });
     this.getBlogPosts();
-    this.pageScroll();
   }
 
   render(){
