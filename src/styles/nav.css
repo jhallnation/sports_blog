@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rasa:wght@600&display=swap');
+
 .site-top-image{
   background-image: url("../../src/images/basketball.jpeg");
   background-attachment: fixed;
@@ -6,6 +8,7 @@
   background-size: cover;
   height: 400px; 
   text-align: center;
+  display: flex;
 }
 
 .nav-menu {
@@ -17,9 +20,8 @@
   padding-top:25px;
   padding-bottom:25px;
   width: 100%;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
 }
+
 .nav-menu-fixed {
   position: fixed;
   top: 0;
@@ -30,24 +32,32 @@
   padding-top:25px;
   padding-bottom:25px;
   width: 100%;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  z-index: 999;
 }
 .nav-links-container {
   border: 2px solid #00181D;
-  border-radius: 10px;
+  border-radius: 3px;
   margin-right:25px;
   margin-left:25px;
 }
+
+.site-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: rgba(255,255,255,.25);
+  border-radius: 3px;
+  width:35%;
+  height: 125px
+}
 .site-title h1{
-  padding-top: 150px;
   font-size: 50px;
   color:#2EB2FF;
-  font-family: 'Stalinist One', cursive;
+  font-family: 'Rasa', serif;
 }
 .site-title h2{
   color: #FF004D;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Rasa', serif;
 }
 .site-title h2:hover {
   animation: Logo-spin 2s infinite;
@@ -65,18 +75,12 @@
 .nav-links:hover {
   color:#2EB2FF;
   background-color: #00181D;
-  border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-radius: 3px;
 }
 .active {
   color:#2EB2FF;
   background-color: #00181D;
-  border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-radius: 3px;
 }
 
 /*

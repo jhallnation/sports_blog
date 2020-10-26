@@ -23,6 +23,13 @@ export class NewBlog extends Component {
         body: this.state.newBlog.body
       }}, function(){
         this.props.addBlog(this.state.newBlog);
+        this.toggleDisplay();
+        this.setState({ 
+          newBlog: {
+            title: '',
+            body: ''
+          },
+        });
       });
     }
     e.preventDefault();

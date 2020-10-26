@@ -13,11 +13,12 @@ export class Blogs extends Component {
     };
     this.pageScroll = this.pageScroll.bind(this);
     this.getBlogPosts = this.getBlogPosts.bind(this);
+    this.handleAddBlog = this.handleAddBlog.bind(this)
   }
  
   getBlogPosts(){
     $.ajax({
-      url: "http://localhost:3000/api/sports-blogs?page=" + (this.state.currentPage + 1),
+      url: "http://localhost:3000/api/sports-blog?page=" + (this.state.currentPage + 1),
       dataType: 'json',
       cache:false,
       success: function(data){
@@ -35,16 +36,25 @@ export class Blogs extends Component {
 
   handleAddBlog(blog){
     $.ajax({
-      url: "http://localhost:3000/api/sports-blogs/new",
+      url: "http://localhost:3000/api/sports-blog/new",
       dataType: 'json',
       type: 'POST',
       data: {blog: blog},
-      success: function(){
-        this.getBlogPosts();
-      },
-      error: function(xhr, status, err){
-        alert(err);
+      success: data => {
+        console.log(data);
+        if (data.new_blog !== true) {
+          console.error('Unable to create blog');
+        } else {
+          this.setState( { 
+            blogs: [],
+            totalCount: 0,
+            currentPage: 0
+          });
+          this.getBlogPosts();
+        }
       }
+    }).catch(error => {
+      console.error('Blog handleSubmit', error);
     });
   }
 
@@ -111,7 +121,7 @@ export class Blogs extends Component {
 
     return ( 
       <div>
-        <BlogItems blogs={this.state.blogs} onDelete={this.handleDeleteBlog.bind(this)} onEdit={this.handleEditBlog.bind(this)} onNew={this.handleAddBlog.bind(this)}/>
+        <BlogItems blogs={this.state.blogs} onDelete={this.handleDeleteBlog.bind(this)} onEdit={this.handleEditBlog.bind(this)} onNew={this.handleAddBlog}/>
         <Waypoint
           onEnter={this.pageScroll}
         />

@@ -1,28 +1,31 @@
 .blog-form {
   margin:25px;
   padding: 25px;
-  border:1px solid black;
   font-family: 'Raleway', sans-serif;
-  border-radius: 25px;
+  border-radius: 3px;
   text-align: center;
-  background-color: #00CCFF;
+  background-color: #2EB2FF;
+  box-shadow: 12px 0 15px -4px rgba(0, 0, 0, 0.25), -12px 0 15px -4px rgba(0, 0, 0, 0.25);
 }
 .blog-title-box {
-  border:1px solid black;
+  border: none;
   margin: 10px 0px 25px 0px;
-  width: 25%;
-  border-radius: 25px;
+  width: 50%;
+  border-radius: 3px;
   font-size: 15px;
   padding:5px;
   font-family: 'Raleway', sans-serif;
   text-align: center;
 }
 
+.blog-title-box:focus {
+  outline: none;
+}
+
 .blog-body-box {
-  border:1px solid black;
   margin: 10px 0px 25px 0px;
   width: 95%;
-  border-radius: 25px;
+  border-radius: 3px;
   height: 200px;
   font-size: 15px;
   padding:5px 15px 5px 15px;
@@ -30,23 +33,17 @@
 }
 .blog-submit {
   cursor: pointer;
-  color:#FF004D;
-  border:1px solid #FF004D;
+  color:#00181D;
+  border: none;
   background-color: #fff;
-  font-family: 'Stalinist One', cursive;
+  ont-family: 'Raleway', sans-serif;
   padding:10px;
-  border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 5px; 
+  border-radius:3px;
+  margin-top:25px;
 }
 .blog-submit:hover {
-  background-color: #FF004D;
+  background-color: #00181D;
   color:#FFF;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-top-left-radius: 5px;
-  border-bottom-right-radius: 5px; 
 }
 
 .admin-options {

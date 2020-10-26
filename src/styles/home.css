@@ -6,7 +6,7 @@
   color: #2EB2FF;
   padding: 5px;
   margin: 10px 125px 10px 125px; 
-  border-radius: 5px;
+  border-radius: 3px;
   border:1px solid #2EB2FF; 
 }
 .new-blog-header:hover {
@@ -18,7 +18,7 @@
   margin:15px;
   padding: 15px;
   letter-spacing: 2.5px;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 .blog-link .blog-container:hover {
   background-color: #00181D;
