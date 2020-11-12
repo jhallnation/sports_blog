@@ -36,7 +36,7 @@
   color:#00181D;
   border: none;
   background-color: #fff;
-  ont-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif;
   padding:10px;
   border-radius:3px;
   margin-top:25px;
@@ -54,22 +54,16 @@
 
 button {
   cursor: pointer;
-  color:#FF004D;
-  border:1px solid #FF004D;
+  color:#00181D;
+  border: 1px solid #4A4A4A;
   background-color: #fff;
   font-family: 'Raleway', sans-serif;
-  padding:7px;
-  border-top-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 5px; 
+  padding:10px;
+  border-radius:3px;
+  margin-top:25px;
 }
 
 button:hover {
-  background-color: #FF004D;
+  background-color: #00181D;
   color:#FFF;
-  border-top-right-radius: 15px;
-  border-bottom-left-radius: 15px;
-  border-top-left-radius: 5px;
-  border-bottom-right-radius: 5px; 
 }
