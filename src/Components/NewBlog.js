@@ -1,49 +1,63 @@
 import React, { Component } from 'react';
 import CKEditor from "react-ckeditor-component";
+import axios from 'axios';
 
 export class NewBlog extends Component {
   constructor(){
     super();
     this.state = { 
-      newBlog: {
-        title: '',
-        body: ''
-      },
+      title: '',
+      body: '',
       display: '' 
     }
     this.toggleDisplay = this.toggleDisplay.bind(this);
-    this.onChange = this.onChange.bind(this);
+    this.onBodyChange = this.onBodyChange.bind(this);
+    this.onTitleChange = this.onTitleChange.bind(this);
   }
   handleSubmit(e){
-    if(this.refs.title.value === ''){
+    if(this.state.title.value === ''){
       alert('TITLE IS REQUIRED');
     } else {
-      this.setState({newBlog:{
-        title: this.refs.title.value,
-        body: this.state.newBlog.body
-      }}, function(){
-        this.props.addBlog(this.state.newBlog);
-        this.toggleDisplay();
-        this.setState({ 
-          newBlog: {
+      axios({
+        method: 'post',
+        url: "http://localhost:3000/api/sports-blog/new",
+        data: this.buildForm(),
+      }).then(response => {
+        if (response.data.new_blog !== true) {
+          console.error('Unable to create blog');
+        } else {
+          this.props.addBlog();
+          this.setState({ 
             title: '',
             body: ''
-          },
-        });
+          });
+          this.toggleDisplay();
+        }}).catch(error => {
+          console.error('Blog handleSubmit', error);
       });
     }
     e.preventDefault();
   }
 
-  onChange(evt){
-    var newContent = evt.editor.getData();
+  onBodyChange(evt){
     this.setState({
-        newBlog: Object.assign(
-          {}, 
-          this.state.newBlog,
-          { body: newContent }
-        )
-    })
+      body: evt.editor.getData() 
+    });
+  }
+
+  onTitleChange(evt){
+    this.setState({
+      title: evt.target.value,
+    });
+  }
+
+  buildForm() {
+    let formData = new FormData();
+
+    formData.append('blog[title]', this.state.title);
+    formData.append('blog[body]', this.state.body);
+
+    return formData;
   }
 
   componentWillMount(){
@@ -62,14 +76,19 @@ export class NewBlog extends Component {
         <form className='blog-form' onSubmit={this.handleSubmit.bind(this)} style={{display:this.state.display}} >
           <div>
             <label>Title</label><br />
-            <input className='blog-title-box' type='text' ref='title' />
+            <input 
+              className='blog-title-box' 
+              type='text'
+              onChange={this.onTitleChange}
+              value={this.state.title} 
+            />
           </div>
           <div>
             <label>Body</label><br />
             <CKEditor 
-              content={this.state.newBlog.body}
+              content={this.state.body}
               events={{
-                "change": this.onChange
+                "change": this.onBodyChange
               }} />
           </div>
           <input className='blog-submit' type="submit" value="Submit" />

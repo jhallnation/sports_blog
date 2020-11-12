@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Waypoint from 'react-waypoint';
 import { BlogItems } from '../Components/BlogItems';
 import $ from 'jquery';
+import axios from 'axios';
 
 export class Blogs extends Component {
   constructor(){
@@ -17,45 +18,28 @@ export class Blogs extends Component {
   }
  
   getBlogPosts(){
-    $.ajax({
+    axios({
       url: "http://localhost:3000/api/sports-blog?page=" + (this.state.currentPage + 1),
-      dataType: 'json',
-      cache:false,
-      success: function(data){
-        this.setState({
-          blogs: this.state.blogs.concat(data.blogs),
-          currentPage: this.state.currentPage + 1,
-          totalCount: data.meta.total_blogs,
-        });
-      }.bind(this),
-      error: function(xhr, status, err){
-        alert(err);
-      }
+      method: 'get',
+    }).then(response => {
+      console.log(response);
+      this.setState({
+        blogs: this.state.blogs.concat(response.data.blogs),
+        currentPage: this.state.currentPage + 1,
+        totalCount: response.data.meta.total_blogs,
+      });
+    }).catch(error => {
+      console.error('Blog getBlogPosts', error);
     });
   }
 
-  handleAddBlog(blog){
-    $.ajax({
-      url: "http://localhost:3000/api/sports-blog/new",
-      dataType: 'json',
-      type: 'POST',
-      data: {blog: blog},
-      success: data => {
-        console.log(data);
-        if (data.new_blog !== true) {
-          console.error('Unable to create blog');
-        } else {
-          this.setState( { 
-            blogs: [],
-            totalCount: 0,
-            currentPage: 0
-          });
-          this.getBlogPosts();
-        }
-      }
-    }).catch(error => {
-      console.error('Blog handleSubmit', error);
+  handleAddBlog(blog){  
+    this.setState({ 
+      blogs: [],
+      totalCount: 0,
+      currentPage: 0
     });
+    this.getBlogPosts();
   }
 
   handleEditBlog(blog){
