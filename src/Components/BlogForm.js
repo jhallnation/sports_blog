@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 import CKEditor from "react-ckeditor-component";
 import axios from 'axios';
 
-export class NewBlog extends Component {
+export class BlogForm extends Component {
   constructor(){
     super();
     this.state = { 
       title: '',
       body: '',
-      display: '' 
+      display: 'none',
+      editbutton: 'Edit',
+
+      apiURL: 'http://localhost:3000/api/sports-blog/new',
+      apiAction: 'post',
+      editMode: false,
     }
+
     this.toggleDisplay = this.toggleDisplay.bind(this);
     this.onBodyChange = this.onBodyChange.bind(this);
     this.onTitleChange = this.onTitleChange.bind(this);
@@ -61,18 +67,41 @@ export class NewBlog extends Component {
   }
 
   componentWillMount(){
-    this.setState({ display: 'none' });
+    if (this.props.editMode) {
+      this.setState({ 
+        title: this.props.blog.title,
+        body: this.props.blog.body,
+        editMode: this.props.editMode,
+      });
+    }
   }
 
-   toggleDisplay() {
-    const newDisplay = this.state.display === 'none' ? 'block' : 'none';
-    this.setState({ display: newDisplay });
+  componentDidUpdate() {
+    
+  }
+
+  toggleDisplay() {
+    const displayForm = this.state.display === 'none' ? 'block' : 'none';
+    this.setState({ display: displayForm });
+    if (this.state.editMode) {
+      this.setState({ editbutton: 'Cancel Edit for' });
+      this.props.toggleDetailDisplay();
+    }
   }
 
   render(){
     return ( 
       <div>
-        <h4 className='new-blog-header' onClick={this.toggleDisplay } >New Blog</h4>
+          {this.state.editMode ? (
+            <div className='admin-options'>
+                <button>Delete {this.props.blog.title}</button>
+                <button onClick={this.toggleDisplay}>{this.state.editbutton} {this.props.blog.title}</button>
+            </div>
+          ) : (
+            <div className='admin-options'>
+              <button onClick={this.toggleDisplay}>Create New Blog</button>
+            </div>
+          )}
         <form className='blog-form' onSubmit={this.handleSubmit.bind(this)} style={{display:this.state.display}} >
           <div>
             <label>Title</label><br />

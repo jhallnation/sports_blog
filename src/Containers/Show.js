@@ -1,33 +1,22 @@
 import React, { Component } from 'react';
-import { EditBlog } from '../Components/EditBlog.js';
+import { BlogForm } from '../Components/BlogForm.js';
 
 export class Show extends Component {
   constructor(){
     super();
     this.state = { 
-      blogdisplay: '',
-      formdisplay: '',
-      editbutton: ''
-    }
-    this.toggleDisplay = this.toggleDisplay.bind(this);
-  }
-
-  componentWillMount(){
-    this.setState({ 
       blogdisplay: 'block',
       formdisplay: 'none',
-      editbutton: 'Edit Blog'
-    });
+      editMode: true
+    }
+    this.toggleDetailDisplay = this.toggleDetailDisplay.bind(this);
   }
 
-  toggleDisplay() {
-    const newBlogDisplay = this.state.blogdisplay === 'none' ? 'block' : 'none';
-    const newFormDisplay = this.state.formdisplay === 'block' ? 'none' : 'block';
-    const changeEditButton = this.state.editbutton === 'Edit Blog' ? 'Cancel Edit for' : 'Edit Blog';
+  toggleDetailDisplay() {
+    const display = this.state.blogdisplay === 'none' ? 'block' : 'none';
+    
     this.setState({ 
-      blogdisplay: newBlogDisplay,
-      formdisplay: newFormDisplay,
-      editbutton: changeEditButton
+      blogdisplay: display,
     });
   }
 
@@ -42,19 +31,12 @@ export class Show extends Component {
   render(){
     return ( 
         <div>
-          <div className='admin-options'>
-            <button onClick={this.deleteBlog.bind(this, this.props.blog.id)}>Delete Blog {this.props.blog.title}</button>
-            <button onClick={this.props.showAll}>See All Blogs</button>
-            <button onClick={this.toggleDisplay } >{this.state.editbutton} {this.props.blog.title}</button>
-          </div>
+          <BlogForm blog={this.props.blog} editMode={this.state.editMode} toggleDetailDisplay={this.toggleDetailDisplay}/>
           <div className='blog-container' style={{display:this.state.blogdisplay}}>
             <h3 className='blog-title'>{this.props.blog.title}</h3>
             <div name='blog-content' >
               <div dangerouslySetInnerHTML={{__html: this.props.blog.body}} />
             </div>
-          </div>
-          <div style={{display:this.state.formdisplay}}>
-            <EditBlog blog={this.props.blog} editBlog={this.editBlog.bind(this)}/>
           </div>
         </div>
     );

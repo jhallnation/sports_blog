@@ -22,7 +22,6 @@ export class Blogs extends Component {
       url: "http://localhost:3000/api/sports-blog?page=" + (this.state.currentPage + 1),
       method: 'get',
     }).then(response => {
-      console.log(response);
       this.setState({
         blogs: this.state.blogs.concat(response.data.blogs),
         currentPage: this.state.currentPage + 1,
@@ -77,19 +76,19 @@ export class Blogs extends Component {
     }
   }
 
-  handleSubmit(e){
-    if(this.refs.title.value === ''){
-      alert('TITLE IS REQUIRED');
-    } else {
-      this.setState({newBlog:{
-        title: this.refs.title.value,
-        body: this.refs.body.value
-      }}, function(){
-        this.props.getBlogPosts(this.state.newBlog);
-      });
-    }
-    e.preventDefault();
-  }
+  // handleSubmit(e){
+  //   if(this.refs.title.value === ''){
+  //     alert('TITLE IS REQUIRED');
+  //   } else {
+  //     this.setState({newBlog:{
+  //       title: this.refs.title.value,
+  //       body: this.refs.body.value
+  //     }}, function(){
+  //       this.props.getBlogPosts(this.state.newBlog);
+  //     });
+  //   }
+  //   e.preventDefault();
+  // }
 
   pageScroll(){
     if (this.state.totalCount !== this.state.blogs.length) {

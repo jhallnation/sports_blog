@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BlogItem } from './BlogItem.js';
 import { Show } from '../Containers/Show.js';
-import { NewBlog } from './NewBlog.js';
+import { BlogForm } from './BlogForm.js';
 
 export class BlogItems extends Component {
   constructor(){
@@ -63,7 +63,7 @@ export class BlogItems extends Component {
       <div> 
         <div style={{display:this.state.singleBlogDisplay}} >
           <div>
-            <NewBlog addBlog={this.props.onNew.bind(this)} />
+            <BlogForm addBlog={this.props.onNew.bind(this)} />
           </div>
           <div>
             {BlogItems}
