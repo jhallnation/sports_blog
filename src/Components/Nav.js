@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import Waypoint from 'react-waypoint';
+import { withRouter } from "react-router";
 
-export class Nav extends Component {
-  constructor(){
-    super();
+class Nav extends Component {
+  constructor(props){
+    super(props);
     this.state = { style: '' };
     this.changePosition = this.changePosition.bind(this);
   }
@@ -23,13 +24,14 @@ export class Nav extends Component {
         <div className='App-header'>
           <div className="site-top-image">
             <div className='site-title'>
-              <h1>JHALL NATION</h1><h2>Sports</h2>
+              <h1>JHALL NATION</h1>
+              <h2>Sports</h2>
             </div>
           </div>
             <Waypoint 
               onEnter={this.changePosition}
               onLeave={this.changePosition}
-              />
+            />
           <div className={this.state.style} >
             <div className='nav-links-container'>
               <NavLink className='nav-links' activeClassName="active" to="/about">About</NavLink>
@@ -41,3 +43,5 @@ export class Nav extends Component {
     );
   }
 }
+
+export default withRouter(Nav);

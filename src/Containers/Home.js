@@ -3,7 +3,7 @@ import { Blogs } from '../Components/Blogs.js';
 
 
 
-export class Home extends Component {
+export default class Home extends Component {
   render(){
     return ( 
       <div className='content-container'>

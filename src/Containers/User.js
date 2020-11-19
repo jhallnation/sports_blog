@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 
-export class User extends Component {
-  constructor(){
-    super();
+export default class User extends Component {
+  constructor(props){
+    super(props);
     this.state = { 
       user: [],
       userToken: ''

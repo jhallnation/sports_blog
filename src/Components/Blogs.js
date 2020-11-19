@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Waypoint from 'react-waypoint';
-import { BlogItems } from '../Components/BlogItems';
+import BlogItem from './BlogItem.js';
+import BlogForm from './BlogForm.js';
 import $ from 'jquery';
 import axios from 'axios';
 
 export class Blogs extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = { 
       blogs: [],
       totalCount: 0,
@@ -101,10 +102,21 @@ export class Blogs extends Component {
   }
 
   render(){
+    const blogItems = this.state.blogs.map(blogItem => {
+
+      return <BlogItem key={blogItem.id} blogItem={blogItem} />;
+    });
+
+    console.log(blogItems);
+
+
 
     return ( 
       <div>
-        <BlogItems blogs={this.state.blogs} onDelete={this.handleDeleteBlog.bind(this)} onEdit={this.handleEditBlog.bind(this)} onNew={this.handleAddBlog}/>
+        <div>
+          <BlogForm addBlog={this.handleAddBlog} />
+        </div>
+        {blogItems}
         <Waypoint
           onEnter={this.pageScroll}
         />

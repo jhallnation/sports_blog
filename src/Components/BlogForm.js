@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import CKEditor from "react-ckeditor-component";
 import axios from 'axios';
 
-export class BlogForm extends Component {
-  constructor(){
-    super();
+export default class BlogForm extends Component {
+  constructor(props){
+    super(props);
     this.state = { 
       title: '',
       body: '',
@@ -25,12 +25,12 @@ export class BlogForm extends Component {
       alert('TITLE IS REQUIRED');
     } else {
       axios({
-        method: 'post',
-        url: "http://localhost:3000/api/sports-blog/new",
+        method: this.state.apiAction,
+        url: this.state.apiURL,
         data: this.buildForm(),
       }).then(response => {
-        if (response.data.new_blog !== true) {
-          console.error('Unable to create blog');
+        if (response.data.new_edit_blog !== true) {
+          console.error('Unable to create/edit blog');
         } else {
           this.props.addBlog();
           this.setState({ 
@@ -72,13 +72,23 @@ export class BlogForm extends Component {
         title: this.props.blog.title,
         body: this.props.blog.body,
         editMode: this.props.editMode,
+        apiURL: 'http://localhost:3000/api/sports-blog/edit',
+        apiAction: 'patch',
       });
     }
   }
 
-  componentDidUpdate() {
-    
-  }
+  // componentDidUpdate() {
+  //   if (this.props.editMode) {
+  //     this.setState({ 
+  //       title: this.props.blog.title,
+  //       body: this.props.blog.body,
+  //       editMode: this.props.editMode,
+  //       apiURL: 'http://localhost:3000/api/sports-blog/edit',
+  //       apiAction: 'patch',
+  //     });
+  //   }
+  // }
 
   toggleDisplay() {
     const displayForm = this.state.display === 'none' ? 'block' : 'none';

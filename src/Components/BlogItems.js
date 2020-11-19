@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { BlogItem } from './BlogItem.js';
-import { Show } from '../Containers/Show.js';
+import BlogPost from '../Containers/BlogPost.js';
 import { BlogForm } from './BlogForm.js';
 
 export class BlogItems extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = { 
       singleBlogDisplay: '',
       singleBlog: '',
@@ -37,7 +37,7 @@ export class BlogItems extends Component {
     const newBlogDisplay = this.state.singleBlogDisplay === 'block' ? 'none' : 'block';
 
     const newSignleBlog = this.state.singleBlog === '' 
-    ? <Show blog={blog} onDelete={this.deleteBlog.bind(this)} onEdit={this.editBlog.bind(this)} showAll={this.onBlogClick} /> 
+    ? <BlogPost blog={blog} onDelete={this.deleteBlog.bind(this)} onEdit={this.editBlog.bind(this)} showAll={this.onBlogClick} /> 
     : '';
 
     this.setState({ 
@@ -62,9 +62,7 @@ export class BlogItems extends Component {
     return (
       <div> 
         <div style={{display:this.state.singleBlogDisplay}} >
-          <div>
-            <BlogForm addBlog={this.props.onNew.bind(this)} />
-          </div>
+
           <div>
             {BlogItems}
           </div>

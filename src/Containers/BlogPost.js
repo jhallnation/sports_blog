@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { BlogForm } from '../Components/BlogForm.js';
+import BlogForm from '../Components/BlogForm.js';
 
-export class Show extends Component {
-  constructor(){
-    super();
+export default class BlogPost extends Component {
+  constructor(props){
+    super(props);
     this.state = { 
       blogdisplay: 'block',
       formdisplay: 'none',

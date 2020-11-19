@@ -1,35 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Truncate from 'react-truncate-html';
+import { Link } from 'react-router-dom';
 
-export class BlogItem extends Component {
-  constructor(){
-    super();
-    this.truncateBlog = this.truncateBlog.bind(this);
-  }
+const BlogItem = props => {
+  const {id, title, body} = props.blogItem;
+  console.log(props.blogItem)
 
-  truncateBlog(blogBody){
-    if(blogBody.length > 200){
-      return blogBody.substring(0, 200) + "...";
-    }else{
-      return blogBody;
-    }
-  }
+  // truncateBlog(blogBody){
+  //   if(blogBody.length > 200){
+  //     return blogBody.substring(0, 200) + "...";
+  //   }else{
+  //     return blogBody;
+  //   }
+  // }
 
-
-  render(){
-    return (
-      <div className='blog-link' >
-          <div className='blog-container'>
-            <h3 className='blog-title'>{this.props.blog.title}</h3>
-            <div name='blog-content' >
+  return (
+    <Link to={`/blog/${id}`} className='blog-link' >
+        <div className='blog-container'>
+          <h3 className='blog-title'>{title}</h3>
+          <div name='blog-content' >
               <Truncate 
                 lines={8} 
                 portrait={10} 
-                dangerouslySetInnerHTML={{__html: this.props.blog.body }}
+                dangerouslySetInnerHTML={{__html: body }}
               />
-            </div>
           </div>
-      </div>
-    );
-  }
+        </div>
+    </Link>
+  );
 }
+
+export default BlogItem;
