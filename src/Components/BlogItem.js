@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 const BlogItem = props => {
   const {id, title, body} = props.blogItem;
-  console.log(props.blogItem)
 
   // truncateBlog(blogBody){
   //   if(blogBody.length > 200){
@@ -18,7 +17,7 @@ const BlogItem = props => {
     <Link to={`/blog/${id}`} className='blog-link' >
         <div className='blog-container'>
           <h3 className='blog-title'>{title}</h3>
-          <div name='blog-content' >
+          <div className='blog-content' >
               <Truncate 
                 lines={8} 
                 portrait={10} 

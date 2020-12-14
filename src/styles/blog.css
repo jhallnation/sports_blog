@@ -31,3 +31,16 @@
   color: #2EB2FF; 
   font-family: 'Comfortaa', cursive;
 }
+
+.blog-link {
+  text-decoration: none;
+}
+
+.blog-link:hover .blog-content{
+  color: white;
+}
+
+.blog-content {
+  color: black;
+  font-family: 'Comfortaa', cursive;
+}

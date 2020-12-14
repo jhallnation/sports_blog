@@ -107,10 +107,6 @@ export class Blogs extends Component {
       return <BlogItem key={blogItem.id} blogItem={blogItem} />;
     });
 
-    console.log(blogItems);
-
-
-
     return ( 
       <div>
         <div>

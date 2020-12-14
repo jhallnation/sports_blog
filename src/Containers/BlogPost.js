@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import BlogForm from '../Components/BlogForm.js';
 
 export default class BlogPost extends Component {
   constructor(props){
     super(props);
     this.state = { 
+      blogPostID: this.props.match.params.slug,
+      blogPost: {},
       blogdisplay: 'block',
-      formdisplay: 'none',
-      editMode: true
+      formdisplay: 'none'
     }
+
     this.toggleDetailDisplay = this.toggleDetailDisplay.bind(this);
+    this.getBlogPost = this.getBlogPost.bind(this);
   }
 
   toggleDetailDisplay() {
@@ -22,23 +26,49 @@ export default class BlogPost extends Component {
 
   deleteBlog(id){
     this.props.onDelete(id);
+    // move over from blogs.js
   }
 
   editBlog(blog){
     this.props.onEdit(blog);
   }
 
+  getBlogPost(){
+    axios({
+      url: "http://localhost:3000//api/sports-blog/post",
+      method: 'get',
+      headers: {
+        'sportsBlogPostID': this.state.blogPostID
+      }
+    }).then(response => {
+      this.setState({
+        blogPost: response.data
+      });
+    }).catch(error => {
+      console.error('Blog getBlogPosts', error);
+    });
+  }
+
+  componentDidMount(){
+    this.getBlogPost();
+  }
+
   render(){
-    return ( 
+    const {title, body} = this.state.blogPost;
+    return Object.keys(this.state.blogPost).length !== 0 ? ( 
         <div>
-          <BlogForm blog={this.props.blog} editMode={this.state.editMode} toggleDetailDisplay={this.toggleDetailDisplay}/>
+          <BlogForm blog={this.state.blogPost} editMode={true} toggleDetailDisplay={this.toggleDetailDisplay} getBlogPost={this.getBlogPost}/>
           <div className='blog-container' style={{display:this.state.blogdisplay}}>
-            <h3 className='blog-title'>{this.props.blog.title}</h3>
-            <div name='blog-content' >
-              <div dangerouslySetInnerHTML={{__html: this.props.blog.body}} />
+            <h3 className='blog-title'>{title}</h3>
+            <div className='blog-content' >
+              <div dangerouslySetInnerHTML={{__html: body}} />
             </div>
           </div>
         </div>
+    ) : (
+      <div>
+        Loading ...
+      </div>
     );
   }
 }

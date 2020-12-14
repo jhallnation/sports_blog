@@ -14,6 +14,7 @@ export default class BlogForm extends Component {
       apiURL: 'http://localhost:3000/api/sports-blog/new',
       apiAction: 'post',
       editMode: false,
+      requestHeaders: {}
     }
 
     this.toggleDisplay = this.toggleDisplay.bind(this);
@@ -28,16 +29,22 @@ export default class BlogForm extends Component {
         method: this.state.apiAction,
         url: this.state.apiURL,
         data: this.buildForm(),
+        headers: this.state.requestHeaders
       }).then(response => {
         if (response.data.new_edit_blog !== true) {
           console.error('Unable to create/edit blog');
         } else {
-          this.props.addBlog();
-          this.setState({ 
-            title: '',
-            body: ''
-          });
-          this.toggleDisplay();
+          if (this.state.editMode) {
+            this.toggleDisplay();
+            this.props.getBlogPost();
+          } else {
+            this.props.addBlog();
+            this.setState({ 
+              title: '',
+              body: ''
+            });
+            this.toggleDisplay();
+          }
         }}).catch(error => {
           console.error('Blog handleSubmit', error);
       });
@@ -66,7 +73,7 @@ export default class BlogForm extends Component {
     return formData;
   }
 
-  componentWillMount(){
+  componentDidMount(){
     if (this.props.editMode) {
       this.setState({ 
         title: this.props.blog.title,
@@ -74,21 +81,10 @@ export default class BlogForm extends Component {
         editMode: this.props.editMode,
         apiURL: 'http://localhost:3000/api/sports-blog/edit',
         apiAction: 'patch',
+        requestHeaders: {'sportsBlogPostID': this.props.blog.id }
       });
     }
   }
-
-  // componentDidUpdate() {
-  //   if (this.props.editMode) {
-  //     this.setState({ 
-  //       title: this.props.blog.title,
-  //       body: this.props.blog.body,
-  //       editMode: this.props.editMode,
-  //       apiURL: 'http://localhost:3000/api/sports-blog/edit',
-  //       apiAction: 'patch',
-  //     });
-  //   }
-  // }
 
   toggleDisplay() {
     const displayForm = this.state.display === 'none' ? 'block' : 'none';
@@ -104,8 +100,8 @@ export default class BlogForm extends Component {
       <div>
           {this.state.editMode ? (
             <div className='admin-options'>
-                <button>Delete {this.props.blog.title}</button>
-                <button onClick={this.toggleDisplay}>{this.state.editbutton} {this.props.blog.title}</button>
+                <button>Delete {this.state.title}</button>
+                <button onClick={this.toggleDisplay}>{this.state.editbutton} {this.state.title}</button>
             </div>
           ) : (
             <div className='admin-options'>

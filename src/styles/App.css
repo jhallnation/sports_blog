@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/css?family=Comfortaa');
 @import './nav.css';
-@import './home.css';
+@import './blog.css';
 @import './form.css';
 
 * {
@@ -19,6 +19,7 @@ PAGE CONTENT
 
 .site-container {
   background-color: #4A4A4A;
+  min-height: 100vh;
 }
 
 .content-container{
