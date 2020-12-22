@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import CKEditor from "react-ckeditor-component";
 import axios from 'axios';
 
-export default class BlogForm extends Component {
+class BlogForm extends Component {
   constructor(props){
     super(props);
     this.state = { 
@@ -20,6 +21,7 @@ export default class BlogForm extends Component {
     this.toggleDisplay = this.toggleDisplay.bind(this);
     this.onBodyChange = this.onBodyChange.bind(this);
     this.onTitleChange = this.onTitleChange.bind(this);
+    this.handleDeleteBlog = this.handleDeleteBlog.bind(this);
   }
   handleSubmit(e){
     if(this.state.title.value === ''){
@@ -95,12 +97,31 @@ export default class BlogForm extends Component {
     }
   }
 
+  handleDeleteBlog(){
+    let destroyBlog = prompt('Are you sure you want to delete this blog? Type Y for yes!')
+    if(destroyBlog === 'y' || destroyBlog === 'Y'){
+      axios({
+        url: 'http://localhost:3000/api/sports-blog/delete',
+        method: 'delete',
+        headers: this.state.requestHeaders
+      }).then(response => {
+        if (response.data.delete_blog !== true) {
+          console.error('Unable to delete blog');
+        } else {
+          this.props.history.push('/');
+        }
+      }).catch(error => {
+        console.error('Blog getBlogPosts', error);
+      });
+    }
+  }
+
   render(){
     return ( 
       <div>
           {this.state.editMode ? (
             <div className='admin-options'>
-                <button>Delete {this.state.title}</button>
+                <button onClick={this.handleDeleteBlog}>Delete {this.state.title}</button>
                 <button onClick={this.toggleDisplay}>{this.state.editbutton} {this.state.title}</button>
             </div>
           ) : (
@@ -132,3 +153,5 @@ export default class BlogForm extends Component {
     );
   }
 }
+
+export default withRouter(BlogForm);
