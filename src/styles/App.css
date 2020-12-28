@@ -20,10 +20,11 @@ PAGE CONTENT
 .site-container {
   background-color: #4A4A4A;
   min-height: 100vh;
+  padding-bottom: 35px;
 }
 
 .content-container{
-  padding: 25px 25px 75px 25px;
+  padding: 0px 25px 75px 25px;
   font-family: 'Raleway', sans-serif;
   background-color: #ffffff;
   width: 85%;
@@ -32,13 +33,13 @@ PAGE CONTENT
 
 .page-title {
   color: #2EB2FF;
-  margin-top:25px;
+  padding-top:35px;
   text-align: center;
   font-family: 'Comfortaa', cursive;
 }
 
 hr { 
-    margin: 25px 0;
+    margin: 35px 0;
     height: 1px;
     border: 0;
     background: black;

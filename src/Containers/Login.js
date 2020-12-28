@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 
-export default class User extends Component {
+export default class Login extends Component {
   constructor(props){
     super(props);
     this.state = { 
@@ -48,12 +48,16 @@ export default class User extends Component {
       <div>
         <h1 className='page-title'>Log In</h1>
         <hr />
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <label>Email Address</label>
-          <input type='text' ref='email'></input>
-          <label>Password</label>
-          <input type='text' ref='password'></input>
-          <input type="submit" value="Submit" />
+        <form className='login-form' onSubmit={this.handleSubmit.bind(this)}>
+          <div className='login-input'>
+            <label>Email Address</label>
+            <input type='text' ref='email'></input>
+          </div>
+          <div className='login-input'>
+            <label>Password</label>
+            <input type='text' ref='password'></input>
+          </div>
+          <input className='submit' type="submit" value="Submit" />
         </form>
       </div>
     );

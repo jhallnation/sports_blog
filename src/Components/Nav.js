@@ -36,7 +36,7 @@ class Nav extends Component {
             <div className='nav-links-container'>
               <NavLink className='nav-links' activeClassName="active" to="/about">About</NavLink>
               <NavLink className='nav-links' exact activeClassName="active" to="/">Blog</NavLink>
-              <NavLink className='nav-links' activeClassName="active" to="/user">Log In</NavLink>
+              <NavLink className='nav-links' activeClassName="active" to="/login">Log In</NavLink>
             </div>
           </div>
         </div>

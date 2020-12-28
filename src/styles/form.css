@@ -1,16 +1,24 @@
 .blog-form {
-  margin:25px;
+  margin:35px;
   padding: 25px;
   font-family: 'Raleway', sans-serif;
   border-radius: 3px;
-  margin-bottom: 25px;
+  margin-bottom: 35px;
   text-align: center;
   background-color: #2EB2FF;
   box-shadow: 12px 0 15px -4px rgba(0, 0, 0, 0.25), -12px 0 15px -4px rgba(0, 0, 0, 0.25);
 }
+.blog-form div{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.blog-form div label {
+  margin: 15px;
+}
 .blog-title-box {
   border: none;
-  margin: 10px 0px 25px 0px;
   width: 50%;
   border-radius: 3px;
   font-size: 15px;
@@ -32,7 +40,7 @@
   padding:5px 15px 5px 15px;
   font-family: 'Raleway', sans-serif;
 }
-.blog-submit {
+.submit {
   cursor: pointer;
   color:#00181D;
   border: none;
@@ -42,7 +50,7 @@
   border-radius:3px;
   margin-top:25px;
 }
-.blog-submit:hover {
+.submit:hover {
   background-color: #00181D;
   color:#FFF;
 }
@@ -61,10 +69,42 @@ button {
   font-family: 'Raleway', sans-serif;
   padding:10px;
   border-radius:3px;
-  margin-top:25px;
 }
 
 button:hover {
   background-color: #00181D;
   color:#FFF;
 }
+
+.detail-admin-btn {
+  margin-top: 35px;
+}
+
+.login-form {
+  background-color: #2EB2FF;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 40px;
+  border-radius:3px;
+  box-shadow: 12px 0 15px -4px rgba(0, 0, 0, 0.25), -12px 0 15px -4px rgba(0, 0, 0, 0.25);
+  font-family: 'Raleway', sans-serif;
+}
+
+.login-input {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-input label{
+  margin-bottom: 15px;
+}
+
+.login-input input{
+  width: 400px;
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+}
+

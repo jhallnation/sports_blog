@@ -121,8 +121,8 @@ class BlogForm extends Component {
       <div>
           {this.state.editMode ? (
             <div className='admin-options'>
-                <button onClick={this.handleDeleteBlog}>Delete {this.state.title}</button>
-                <button onClick={this.toggleDisplay}>{this.state.editbutton} {this.state.title}</button>
+                <button className='detail-admin-btn' onClick={this.handleDeleteBlog}>Delete {this.state.title}</button>
+                <button className='detail-admin-btn' onClick={this.toggleDisplay}>{this.state.editbutton} {this.state.title}</button>
             </div>
           ) : (
             <div className='admin-options'>
@@ -131,7 +131,7 @@ class BlogForm extends Component {
           )}
         <form className='blog-form' onSubmit={this.handleSubmit.bind(this)} style={{display:this.state.display}} >
           <div>
-            <label>Title</label><br />
+            <label>Title</label>
             <input 
               className='blog-title-box' 
               type='text'
@@ -140,14 +140,14 @@ class BlogForm extends Component {
             />
           </div>
           <div>
-            <label>Body</label><br />
+            <label>Body</label>
             <CKEditor 
               content={this.state.body}
               events={{
                 "change": this.onBodyChange
               }} />
           </div>
-          <input className='blog-submit' type="submit" value="Submit" />
+          <input className='submit' type="submit" value="Submit" />
         </form>
       </div>
     );
