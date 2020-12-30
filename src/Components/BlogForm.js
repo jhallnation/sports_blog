@@ -15,7 +15,10 @@ class BlogForm extends Component {
       apiURL: 'http://localhost:3000/api/sports-blog/new',
       apiAction: 'post',
       editMode: false,
-      requestHeaders: {}
+      requestHeaders: {
+        'Authorization' : localStorage.getItem('token'),
+        'jhUserEmail' : localStorage.getItem('userEmail'),
+      },
     }
 
     this.toggleDisplay = this.toggleDisplay.bind(this);
@@ -23,6 +26,7 @@ class BlogForm extends Component {
     this.onTitleChange = this.onTitleChange.bind(this);
     this.handleDeleteBlog = this.handleDeleteBlog.bind(this);
   }
+
   handleSubmit(e){
     if(this.state.title.value === ''){
       alert('TITLE IS REQUIRED');
@@ -83,7 +87,11 @@ class BlogForm extends Component {
         editMode: this.props.editMode,
         apiURL: 'http://localhost:3000/api/sports-blog/edit',
         apiAction: 'patch',
-        requestHeaders: {'sportsBlogPostID': this.props.blog.id }
+        requestHeaders: {
+          'sportsBlogPostID': this.props.blog.id,
+          'Authorization' : localStorage.getItem('token'),
+          'jhUserEmail' : localStorage.getItem('userEmail'),
+        }
       });
     }
   }
@@ -121,12 +129,12 @@ class BlogForm extends Component {
       <div>
           {this.state.editMode ? (
             <div className='admin-options'>
-                <button className='detail-admin-btn' onClick={this.handleDeleteBlog}>Delete {this.state.title}</button>
-                <button className='detail-admin-btn' onClick={this.toggleDisplay}>{this.state.editbutton} {this.state.title}</button>
+                <button className='admin-btn' onClick={this.handleDeleteBlog}>Delete {this.state.title}</button>
+                <button className='admin-btn' onClick={this.toggleDisplay}>{this.state.editbutton} {this.state.title}</button>
             </div>
           ) : (
             <div className='admin-options'>
-              <button onClick={this.toggleDisplay}>Create New Blog</button>
+              <button className='admin-btn' onClick={this.toggleDisplay}>Create New Blog</button>
             </div>
           )}
         <form className='blog-form' onSubmit={this.handleSubmit.bind(this)} style={{display:this.state.display}} >

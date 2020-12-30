@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Waypoint from 'react-waypoint';
-import BlogItem from './BlogItem.js';
-import BlogForm from './BlogForm.js';
+import BlogItem from '../Components/BlogItem.js';
+import BlogForm from '../Components/BlogForm.js';
 import axios from 'axios';
 
-export class Blogs extends Component {
+export default class Blogs extends Component {
   constructor(props){
     super(props);
     this.state = { 
@@ -54,14 +54,17 @@ export class Blogs extends Component {
   render(){
     const blogItems = this.state.blogs.map(blogItem => {
 
-      return <BlogItem key={blogItem.id} blogItem={blogItem} />;
+      return <BlogItem key={blogItem.id} blogItem={blogItem} loggedInStatus={this.props.loggedInStatus}/>;
     });
 
     return ( 
-      <div>
-        <div>
-          <BlogForm addBlog={this.handleAddBlog} />
-        </div>
+      <div className='content-container'>
+        <h1 className='page-title'>Blog</h1>
+        {this.props.loggedInStatus === 'LOGGED_IN' ? (
+          <div>
+            <BlogForm addBlog={this.handleAddBlog} />
+          </div>
+        ) : null }
         {blogItems}
         <Waypoint
           onEnter={this.pageScroll}

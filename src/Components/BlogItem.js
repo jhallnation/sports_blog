@@ -14,7 +14,7 @@ const BlogItem = props => {
   // }
 
   return (
-    <Link to={`/blog/${id}`} className='blog-link' >
+    <Link to={`/blog/${id}`} className='blog-link' loggedInStatus={props.loggedInStatus}>
         <div className='blog-container'>
           <h3 className='blog-title'>{title}</h3>
           <div className='blog-content' >

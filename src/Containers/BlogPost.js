@@ -57,7 +57,9 @@ export default class BlogPost extends Component {
     const {title, body} = this.state.blogPost;
     return Object.keys(this.state.blogPost).length !== 0 ? ( 
         <div>
-          <BlogForm blog={this.state.blogPost} editMode={true} toggleDetailDisplay={this.toggleDetailDisplay} getBlogPost={this.getBlogPost}/>
+          {this.props.loggedInStatus === 'LOGGED_IN' ? (
+            <BlogForm blog={this.state.blogPost} editMode={true} toggleDetailDisplay={this.toggleDetailDisplay} getBlogPost={this.getBlogPost}/>
+          ) : null}
           <div className='blog-container' style={{display:this.state.blogdisplay}}>
             <h3 className='blog-title'>{title}</h3>
             <div className='blog-content' >

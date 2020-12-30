@@ -83,6 +83,11 @@
   border-radius: 3px;
 }
 
+.logout-btn {
+  border: none;
+  background-color: #2EB2FF;
+}
+
 /*
 
 animations
