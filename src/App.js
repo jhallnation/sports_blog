@@ -7,6 +7,7 @@ import About from './Containers/About.js';
 import Login from './Containers/Login.js';
 import Blogs from './Containers/Blogs.js';
 import BlogPost from './Containers/BlogPost.js';
+import NoMatch from './Containers/NoMatch.js';
 
 export class App extends Component {
   constructor(props) {
@@ -112,6 +113,7 @@ export class App extends Component {
                   />
                 )}
               />
+              <Route component={ NoMatch }/>
             </Switch>
           </div> 
          </BrowserRouter>

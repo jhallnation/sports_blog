@@ -10,7 +10,8 @@ class BlogForm extends Component {
       title: '',
       body: '',
       display: 'none',
-      editbutton: 'Edit',
+      editbutton: 'Edit Blog',
+      newBlogBtn: 'Create New Blog',
 
       apiURL: 'http://localhost:3000/api/sports-blog/new',
       apiAction: 'post',
@@ -98,10 +99,14 @@ class BlogForm extends Component {
 
   toggleDisplay() {
     const displayForm = this.state.display === 'none' ? 'block' : 'none';
+    const changeNewBlogBtn = this.state.newBlogBtn === 'Create New Blog' ? 'Close Form' : 'Create New Blog';
+    const changeEditBtn = this.state.editbutton === 'Edit Blog' ? 'Close Form' : 'Edit Blog';
     this.setState({ display: displayForm });
     if (this.state.editMode) {
-      this.setState({ editbutton: 'Cancel Edit for' });
+      this.setState({ editbutton: changeEditBtn });
       this.props.toggleDetailDisplay();
+    } else {
+        this.setState({ newBlogBtn: changeNewBlogBtn });
     }
   }
 
@@ -129,12 +134,12 @@ class BlogForm extends Component {
       <div>
           {this.state.editMode ? (
             <div className='admin-options'>
-                <button className='admin-btn' onClick={this.handleDeleteBlog}>Delete {this.state.title}</button>
-                <button className='admin-btn' onClick={this.toggleDisplay}>{this.state.editbutton} {this.state.title}</button>
+                <button className='admin-btn' onClick={this.handleDeleteBlog}>Delete Blog</button>
+                <button className='admin-btn' onClick={this.toggleDisplay}>{this.state.editbutton}</button>
             </div>
           ) : (
             <div className='admin-options'>
-              <button className='admin-btn' onClick={this.toggleDisplay}>Create New Blog</button>
+              <button className='admin-btn' onClick={this.toggleDisplay}>{this.state.newBlogBtn}</button>
             </div>
           )}
         <form className='blog-form' onSubmit={this.handleSubmit.bind(this)} style={{display:this.state.display}} >

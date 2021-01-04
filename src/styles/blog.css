@@ -30,6 +30,7 @@
   text-align: center;
   color: #2EB2FF; 
   font-family: 'Comfortaa', cursive;
+  margin-bottom: 25px;
 }
 
 .blog-link {
@@ -42,5 +43,10 @@
 
 .blog-content {
   color: black;
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Roboto', sans-serif;
+  line-height: 2;
+}
+
+.read-more {
+  color: #2EB2FF;
 }

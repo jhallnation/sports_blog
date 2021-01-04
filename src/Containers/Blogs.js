@@ -54,7 +54,7 @@ export default class Blogs extends Component {
   render(){
     const blogItems = this.state.blogs.map(blogItem => {
 
-      return <BlogItem key={blogItem.id} blogItem={blogItem} loggedInStatus={this.props.loggedInStatus}/>;
+      return <BlogItem key={blogItem.id} blogItem={blogItem} />;
     });
 
     return ( 

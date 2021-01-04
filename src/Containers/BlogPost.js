@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import BlogForm from '../Components/BlogForm.js';
+import ReactHtmlParser from 'react-html-parser';
 
 export default class BlogPost extends Component {
   constructor(props){
@@ -63,7 +64,7 @@ export default class BlogPost extends Component {
           <div className='blog-container' style={{display:this.state.blogdisplay}}>
             <h3 className='blog-title'>{title}</h3>
             <div className='blog-content' >
-              <div dangerouslySetInnerHTML={{__html: body}} />
+              <div>{ReactHtmlParser(body)}</div>
             </div>
           </div>
         </div>
